@@ -1,0 +1,10 @@
+ADDI x1, x0, 1
+ADD  x3, x0, x0
+BEQ  x2, x0, Exit
+Loop:
+SLL  x3, x3, x1
+ADD  x3, x3, x1
+SUB  x2, x2, x1
+BNE  x2, x0, Loop
+Exit:
+SW   x3, 8(x0)
