@@ -1,0 +1,2088 @@
+$date
+	Thu Feb 15 09:51:50 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module Core_tb $end
+$var reg 1 ! clk $end
+$var reg 7 " cycle_count [6:0] $end
+$var reg 1 # mem_enable $end
+$var reg 1 $ reset $end
+$scope module core_proc $end
+$var wire 1 ! clock $end
+$var wire 1 # mem_en $end
+$var wire 1 $ reset $end
+$var wire 1 % writeback_data_valid $end
+$var wire 32 & writeback_data [31:0] $end
+$var wire 1 ' valid_mem_data_addr $end
+$var wire 1 ( stall $end
+$var wire 32 ) pc_mux_select [31:0] $end
+$var wire 32 * pc_branch_offset [31:0] $end
+$var wire 1 + mem_gnt_req $end
+$var wire 1 , mem_data_req_valid $end
+$var wire 5 - lsu_write_addr_reg_op [4:0] $end
+$var wire 3 . lsu_wb_mux_pt [2:0] $end
+$var wire 32 / lsu_uimmd_pt [31:0] $end
+$var wire 32 0 lsu_instr_pc_addr_pt [31:0] $end
+$var wire 1 1 lsu_alu_result_valid_pt $end
+$var wire 32 2 lsu_alu_result_pt [31:0] $end
+$var wire 32 3 load_mem_data [31:0] $end
+$var wire 1 4 instr_mem_valid $end
+$var wire 32 5 instr_mem_data [31:0] $end
+$var wire 32 6 if_instr_pc_addr [31:0] $end
+$var wire 5 7 id_write_addr_reg_op [4:0] $end
+$var wire 3 8 id_wb_mux_op [2:0] $end
+$var wire 32 9 id_uimmd_pt [31:0] $end
+$var wire 4 : id_lsu_operator_pt [3:0] $end
+$var wire 1 ; id_lsu_en_pt $end
+$var wire 32 < id_instr_pc_addr_pt [31:0] $end
+$var wire 5 = fwd_src2_reg_addr [4:0] $end
+$var wire 5 > fwd_src1_reg_addr [4:0] $end
+$var wire 7 ? fwd_instr_opcode [6:0] $end
+$var wire 1 @ flush $end
+$var wire 5 A ex_write_addr_reg_op [4:0] $end
+$var wire 3 B ex_wb_mux_pt [2:0] $end
+$var wire 32 C ex_uimmd_pt [31:0] $end
+$var wire 4 D ex_lsu_operator [3:0] $end
+$var wire 1 E ex_lsu_en $end
+$var wire 32 F ex_instr_pc_addr_pt [31:0] $end
+$var wire 1 G ex_alu_result_valid_pt $end
+$var wire 32 H ex_alu_result_pt [31:0] $end
+$var wire 32 I ex_DRAM_wdata [31:0] $end
+$var wire 7 J alu_operator [6:0] $end
+$var wire 32 K alu_operand_b [31:0] $end
+$var wire 32 L alu_operand_a [31:0] $end
+$var wire 1 M alu_next_pc_addr_valid $end
+$var wire 32 N alu_next_pc_addr [31:0] $end
+$var wire 1 O alu_en $end
+$var wire 3 P FB [2:0] $end
+$var wire 3 Q FA [2:0] $end
+$var wire 32 R DRAM_wdata [31:0] $end
+$var wire 32 S DRAM_load_mem_data [31:0] $end
+$var reg 32 T next_instr_addr [31:0] $end
+$scope module ForwardController_Module $end
+$var wire 1 $ reset $end
+$var wire 7 U id_instr_opcode_ip [6:0] $end
+$var wire 3 V MEM_WB_wb_mux_ip [2:0] $end
+$var wire 5 W MEM_WB_dest_ip [4:0] $end
+$var wire 1 X MEM_WB_RegWrite_en $end
+$var wire 5 Y ID_dest_rs2_ip [4:0] $end
+$var wire 5 Z ID_dest_rs1_ip [4:0] $end
+$var wire 3 [ EX_MEM_wb_mux_ip [2:0] $end
+$var wire 5 \ EX_MEM_dest_ip [4:0] $end
+$var wire 1 ] EX_MEM_RegWrite_en $end
+$var reg 3 ^ fa_mux_op [2:0] $end
+$var reg 3 _ fb_mux_op [2:0] $end
+$upscope $end
+$scope module InstructionDecode_Module $end
+$var wire 1 ! clock $end
+$var wire 32 ` pc4 [31:0] $end
+$var wire 1 $ reset $end
+$var wire 5 a write_reg_addr_ip [4:0] $end
+$var wire 1 % wb_data_valid_ip $end
+$var wire 32 b wb_data_ip [31:0] $end
+$var wire 32 c valid_instr_to_decode [31:0] $end
+$var wire 1 ( stall_op $end
+$var wire 5 d regfile_write_addr_a_id [4:0] $end
+$var wire 5 e regfile_read_addr_b_id [4:0] $end
+$var wire 5 f regfile_read_addr_a_id [4:0] $end
+$var wire 32 g regfile_b_out [31:0] $end
+$var wire 32 h regfile_a_out [31:0] $end
+$var wire 32 i pc [31:0] $end
+$var wire 5 j mem_dest_reg_ip [4:0] $end
+$var wire 1 4 instr_data_valid_ip $end
+$var wire 32 k instr_data_ip [31:0] $end
+$var wire 1 @ flush_en_ip $end
+$var wire 1 l alu_en $end
+$var reg 7 m EX_instruction_opcode [6:0] $end
+$var reg 5 n ID_src1_reg_addr [4:0] $end
+$var reg 5 o ID_src2_reg_addr [4:0] $end
+$var reg 32 p J_IMM [31:0] $end
+$var reg 1 O alu_en_op $end
+$var reg 32 q alu_operand_a_ex [31:0] $end
+$var reg 32 r alu_operand_a_ex_op [31:0] $end
+$var reg 32 s alu_operand_b_ex [31:0] $end
+$var reg 32 t alu_operand_b_ex_op [31:0] $end
+$var reg 7 u alu_operator [6:0] $end
+$var reg 7 v alu_operator_op [6:0] $end
+$var reg 1 w comparator_en $end
+$var reg 3 x comparator_func [2:0] $end
+$var reg 1 y en_lsu $end
+$var reg 1 ; en_lsu_op $end
+$var reg 32 z id_pc_addr_pt_op [31:0] $end
+$var reg 32 { id_uimmd_pt_op [31:0] $end
+$var reg 4 | lsu_operator [3:0] $end
+$var reg 4 } lsu_operator_op [3:0] $end
+$var reg 32 ~ mem_wdata [31:0] $end
+$var reg 32 !" mem_wdata_op [31:0] $end
+$var reg 3 "" operand_b_select [2:0] $end
+$var reg 32 #" pc_branch_offset [31:0] $end
+$var reg 32 $" pc_branch_offset_op [31:0] $end
+$var reg 3 %" wb_mux_op [2:0] $end
+$var reg 5 &" write_reg_addr_op [4:0] $end
+$var reg 3 '" writeback_mux [2:0] $end
+$var integer 32 (" operand_a_select [31:0] $end
+$var integer 32 )" pc_mux_inter [31:0] $end
+$var integer 32 *" pc_mux_op [31:0] $end
+$scope module StallController_Module $end
+$var wire 7 +" EX_instr_opcode_ip [6:0] $end
+$var wire 5 ," EX_reg_dest_ip [4:0] $end
+$var wire 7 -" ID_instr_opcode_ip [6:0] $end
+$var wire 5 ." ID_src1_addr_ip [4:0] $end
+$var wire 5 /" ID_src2_addr_ip [4:0] $end
+$var wire 1 $ reset $end
+$var wire 1 % WB_write_reg_en_ip $end
+$var wire 5 0" WB_reg_dest_ip [4:0] $end
+$var wire 5 1" LSU_reg_dest_ip [4:0] $end
+$var reg 1 ( stall_op $end
+$upscope $end
+$scope module register_file $end
+$var wire 1 ! clock $end
+$var wire 5 2" raddr_a_ip [4:0] $end
+$var wire 32 3" raddr_a_op [31:0] $end
+$var wire 5 4" raddr_b_ip [4:0] $end
+$var wire 32 5" raddr_b_op [31:0] $end
+$var wire 1 $ reset $end
+$var wire 5 6" waddr_a [4:0] $end
+$var wire 32 7" write_enable_a_dec [31:0] $end
+$var wire 1 % we_a_ip $end
+$var wire 32 8" wdata_a_ip [31:0] $end
+$var wire 5 9" waddr_a_ip [4:0] $end
+$scope begin RF[1] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 :" enable $end
+$var wire 1 $ reset $end
+$var wire 32 ;" data_ip [31:0] $end
+$var reg 32 <" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[2] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 =" enable $end
+$var wire 1 $ reset $end
+$var wire 32 >" data_ip [31:0] $end
+$var reg 32 ?" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[3] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 @" enable $end
+$var wire 1 $ reset $end
+$var wire 32 A" data_ip [31:0] $end
+$var reg 32 B" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[4] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 C" enable $end
+$var wire 1 $ reset $end
+$var wire 32 D" data_ip [31:0] $end
+$var reg 32 E" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[5] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 F" enable $end
+$var wire 1 $ reset $end
+$var wire 32 G" data_ip [31:0] $end
+$var reg 32 H" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[6] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 I" enable $end
+$var wire 1 $ reset $end
+$var wire 32 J" data_ip [31:0] $end
+$var reg 32 K" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[7] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 L" enable $end
+$var wire 1 $ reset $end
+$var wire 32 M" data_ip [31:0] $end
+$var reg 32 N" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[8] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 O" enable $end
+$var wire 1 $ reset $end
+$var wire 32 P" data_ip [31:0] $end
+$var reg 32 Q" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[9] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 R" enable $end
+$var wire 1 $ reset $end
+$var wire 32 S" data_ip [31:0] $end
+$var reg 32 T" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[10] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 U" enable $end
+$var wire 1 $ reset $end
+$var wire 32 V" data_ip [31:0] $end
+$var reg 32 W" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[11] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 X" enable $end
+$var wire 1 $ reset $end
+$var wire 32 Y" data_ip [31:0] $end
+$var reg 32 Z" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[12] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 [" enable $end
+$var wire 1 $ reset $end
+$var wire 32 \" data_ip [31:0] $end
+$var reg 32 ]" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[13] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 ^" enable $end
+$var wire 1 $ reset $end
+$var wire 32 _" data_ip [31:0] $end
+$var reg 32 `" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[14] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 a" enable $end
+$var wire 1 $ reset $end
+$var wire 32 b" data_ip [31:0] $end
+$var reg 32 c" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[15] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 d" enable $end
+$var wire 1 $ reset $end
+$var wire 32 e" data_ip [31:0] $end
+$var reg 32 f" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[16] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 g" enable $end
+$var wire 1 $ reset $end
+$var wire 32 h" data_ip [31:0] $end
+$var reg 32 i" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[17] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 j" enable $end
+$var wire 1 $ reset $end
+$var wire 32 k" data_ip [31:0] $end
+$var reg 32 l" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[18] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 m" enable $end
+$var wire 1 $ reset $end
+$var wire 32 n" data_ip [31:0] $end
+$var reg 32 o" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[19] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 p" enable $end
+$var wire 1 $ reset $end
+$var wire 32 q" data_ip [31:0] $end
+$var reg 32 r" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[20] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 s" enable $end
+$var wire 1 $ reset $end
+$var wire 32 t" data_ip [31:0] $end
+$var reg 32 u" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[21] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 v" enable $end
+$var wire 1 $ reset $end
+$var wire 32 w" data_ip [31:0] $end
+$var reg 32 x" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[22] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 y" enable $end
+$var wire 1 $ reset $end
+$var wire 32 z" data_ip [31:0] $end
+$var reg 32 {" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[23] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 |" enable $end
+$var wire 1 $ reset $end
+$var wire 32 }" data_ip [31:0] $end
+$var reg 32 ~" data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[24] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 !# enable $end
+$var wire 1 $ reset $end
+$var wire 32 "# data_ip [31:0] $end
+$var reg 32 ## data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[25] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 $# enable $end
+$var wire 1 $ reset $end
+$var wire 32 %# data_ip [31:0] $end
+$var reg 32 &# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[26] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 '# enable $end
+$var wire 1 $ reset $end
+$var wire 32 (# data_ip [31:0] $end
+$var reg 32 )# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[27] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 *# enable $end
+$var wire 1 $ reset $end
+$var wire 32 +# data_ip [31:0] $end
+$var reg 32 ,# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[28] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 -# enable $end
+$var wire 1 $ reset $end
+$var wire 32 .# data_ip [31:0] $end
+$var reg 32 /# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[29] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 0# enable $end
+$var wire 1 $ reset $end
+$var wire 32 1# data_ip [31:0] $end
+$var reg 32 2# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[30] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 3# enable $end
+$var wire 1 $ reset $end
+$var wire 32 4# data_ip [31:0] $end
+$var reg 32 5# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin RF[31] $end
+$scope module RF $end
+$var wire 1 ! clock $end
+$var wire 1 6# enable $end
+$var wire 1 $ reset $end
+$var wire 32 7# data_ip [31:0] $end
+$var reg 32 8# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin gen_we_encoder[0] $end
+$upscope $end
+$scope begin gen_we_encoder[1] $end
+$upscope $end
+$scope begin gen_we_encoder[2] $end
+$upscope $end
+$scope begin gen_we_encoder[3] $end
+$upscope $end
+$scope begin gen_we_encoder[4] $end
+$upscope $end
+$scope begin gen_we_encoder[5] $end
+$upscope $end
+$scope begin gen_we_encoder[6] $end
+$upscope $end
+$scope begin gen_we_encoder[7] $end
+$upscope $end
+$scope begin gen_we_encoder[8] $end
+$upscope $end
+$scope begin gen_we_encoder[9] $end
+$upscope $end
+$scope begin gen_we_encoder[10] $end
+$upscope $end
+$scope begin gen_we_encoder[11] $end
+$upscope $end
+$scope begin gen_we_encoder[12] $end
+$upscope $end
+$scope begin gen_we_encoder[13] $end
+$upscope $end
+$scope begin gen_we_encoder[14] $end
+$upscope $end
+$scope begin gen_we_encoder[15] $end
+$upscope $end
+$scope begin gen_we_encoder[16] $end
+$upscope $end
+$scope begin gen_we_encoder[17] $end
+$upscope $end
+$scope begin gen_we_encoder[18] $end
+$upscope $end
+$scope begin gen_we_encoder[19] $end
+$upscope $end
+$scope begin gen_we_encoder[20] $end
+$upscope $end
+$scope begin gen_we_encoder[21] $end
+$upscope $end
+$scope begin gen_we_encoder[22] $end
+$upscope $end
+$scope begin gen_we_encoder[23] $end
+$upscope $end
+$scope begin gen_we_encoder[24] $end
+$upscope $end
+$scope begin gen_we_encoder[25] $end
+$upscope $end
+$scope begin gen_we_encoder[26] $end
+$upscope $end
+$scope begin gen_we_encoder[27] $end
+$upscope $end
+$scope begin gen_we_encoder[28] $end
+$upscope $end
+$scope begin gen_we_encoder[29] $end
+$upscope $end
+$scope begin gen_we_encoder[30] $end
+$upscope $end
+$scope begin gen_we_encoder[31] $end
+$upscope $end
+$scope module RF0 $end
+$var wire 1 ! clock $end
+$var wire 1 9# enable $end
+$var wire 1 $ reset $end
+$var wire 32 :# data_ip [31:0] $end
+$var reg 32 ;# data_op [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module InstructionExecute_Module $end
+$var wire 1 O alu_enable_ip $end
+$var wire 32 <# alu_operand_a_ip [31:0] $end
+$var wire 32 =# alu_operand_b_ip [31:0] $end
+$var wire 7 ># alu_operator_ip [6:0] $end
+$var wire 1 ! clock $end
+$var wire 4 ?# ex_lsu_operator_pt_ip [3:0] $end
+$var wire 32 @# ex_pc_addr_pt_ip [31:0] $end
+$var wire 32 A# ex_uimmd_pt_ip [31:0] $end
+$var wire 3 B# ex_wb_mux_ip [2:0] $end
+$var wire 5 C# ex_write_reg_addr_pt_ip [4:0] $end
+$var wire 3 D# fa_mux_ip [2:0] $end
+$var wire 3 E# fb_mux_ip [2:0] $end
+$var wire 1 ; lsu_enable_pt_ip $end
+$var wire 32 F# mem_wdata_pt_ip [31:0] $end
+$var wire 32 G# pc_branch_offset_ip [31:0] $end
+$var wire 32 H# pc_mux_ip [31:0] $end
+$var wire 1 $ reset $end
+$var wire 32 I# fw_wb_data [31:0] $end
+$var wire 1 J# alu_valid $end
+$var wire 32 K# alu_result [31:0] $end
+$var reg 32 L# alu_operand_a [31:0] $end
+$var reg 32 M# alu_operand_b [31:0] $end
+$var reg 32 N# alu_result_op [31:0] $end
+$var reg 1 G alu_valid_op $end
+$var reg 4 O# ex_lsu_operator_pt_op [3:0] $end
+$var reg 32 P# ex_pc_addr_pt_op [31:0] $end
+$var reg 32 Q# ex_uimmd_pt_op [31:0] $end
+$var reg 3 R# ex_wb_mux_op [2:0] $end
+$var reg 5 S# ex_write_reg_addr_pt_op [4:0] $end
+$var reg 1 @ flush_en_op $end
+$var reg 1 E lsu_enable_pt_op $end
+$var reg 32 T# mem_wdata_pt_op [31:0] $end
+$var reg 32 U# next_PC_addr_op [31:0] $end
+$var reg 1 M next_PC_addr_valid_op $end
+$scope module ArthimeticLogicUnit $end
+$var wire 1 O alu_enable_ip $end
+$var wire 32 V# alu_operand_a_ip [31:0] $end
+$var wire 32 W# alu_operand_b_ip [31:0] $end
+$var wire 7 X# alu_operator_ip [6:0] $end
+$var wire 1 $ reset $end
+$var reg 32 Y# alu_result_op [31:0] $end
+$var reg 1 J# alu_valid_op $end
+$upscope $end
+$upscope $end
+$scope module InstructionFetch_Module $end
+$var wire 32 Z# alu_result_ip [31:0] $end
+$var wire 1 M alu_result_valid_ip $end
+$var wire 1 ! clock $end
+$var wire 1 @ flush_en_ip $end
+$var wire 1 # mem_en $end
+$var wire 1 [# mem_gnt_req $end
+$var wire 32 \# pc_mux_ip [31:0] $end
+$var wire 1 $ reset $end
+$var wire 1 ( stall_ip $end
+$var wire 32 ]# pc_addr [31:0] $end
+$var wire 1 ^# mem_instr_req_valid $end
+$var wire 1 _# instr_valid $end
+$var wire 32 `# instr_mem_addr [31:0] $end
+$var wire 1 + instr_gnt_ip $end
+$var wire 32 a# instr_data [31:0] $end
+$var reg 32 b# Next_PC [31:0] $end
+$var reg 32 c# instr_data_op [31:0] $end
+$var reg 32 d# instr_pc_addr_op [31:0] $end
+$var reg 1 4 instr_valid_op $end
+$scope module FetchModule $end
+$var wire 1 e# Instr_or_Data_op $end
+$var wire 32 f# Next_PC_ip [31:0] $end
+$var wire 1 ! clock $end
+$var wire 1 [# instr_gnt_ip $end
+$var wire 32 g# pc_addr [31:0] $end
+$var wire 1 $ reset $end
+$var reg 32 h# PC [31:0] $end
+$var reg 32 i# instr_addr_op [31:0] $end
+$var reg 1 ^# instr_req_op $end
+$upscope $end
+$scope module InstructionMemory $end
+$var wire 1 ! clock $end
+$var wire 32 j# instr_addr_ip [31:0] $end
+$var wire 1 ^# instr_req_ip $end
+$var wire 1 # mem_en $end
+$var reg 32 k# instr_data_op [31:0] $end
+$var reg 1 _# instr_valid_op $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 l# i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module LoadStoreUnit $end
+$var wire 1 G alu_valid_ip $end
+$var wire 1 ! clock $end
+$var wire 1 ' data_addr_valid_op $end
+$var wire 1 E lsu_en_ip $end
+$var wire 4 m# lsu_operator_ip [3:0] $end
+$var wire 32 n# lsu_pc_addr_pt_ip [31:0] $end
+$var wire 32 o# lsu_uimmd_pt_ip [31:0] $end
+$var wire 3 p# lsu_wb_mux_pt_ip [2:0] $end
+$var wire 5 q# lsu_write_reg_addr_pt_ip [4:0] $end
+$var wire 32 r# mem_addr_ip [31:0] $end
+$var wire 1 $ reset $end
+$var wire 1 s# valid_mem_operation $end
+$var wire 32 t# wb_alu_result_pt_ip [31:0] $end
+$var wire 1 G wb_alu_result_valid_pt_ip $end
+$var wire 32 u# mem_data_ip [31:0] $end
+$var wire 1 + data_gnt_i $end
+$var reg 1 , data_req_op $end
+$var reg 32 v# load_mem_data_op [31:0] $end
+$var reg 32 w# lsu_pc_addr_pt_op [31:0] $end
+$var reg 32 x# lsu_uimmd_pt_op [31:0] $end
+$var reg 3 y# lsu_wb_mux_pt_op [2:0] $end
+$var reg 5 z# lsu_write_reg_addr_pt_op [4:0] $end
+$var reg 32 {# wb_alu_result_pt_op [31:0] $end
+$var reg 1 1 wb_alu_result_valid_pt_op $end
+$upscope $end
+$scope module MainMemory $end
+$var wire 1 ! clock $end
+$var wire 32 |# data_addr_ip [31:0] $end
+$var wire 1 }# data_req $end
+$var wire 1 ' data_req_ip $end
+$var wire 4 ~# lsu_operator [3:0] $end
+$var wire 1 # mem_en $end
+$var wire 32 !$ wdata_ip [31:0] $end
+$var wire 1 + mem_gnt_op $end
+$var reg 32 "$ load_data_op [31:0] $end
+$scope begin $ivl_for_loop1 $end
+$var integer 32 #$ i [31:0] $end
+$upscope $end
+$upscope $end
+$scope module WriteBack_Module $end
+$var wire 32 $$ WB_alu_result_ip [31:0] $end
+$var wire 1 1 WB_alu_result_valid_ip $end
+$var wire 32 %$ WB_immediate_ip [31:0] $end
+$var wire 32 &$ WB_mem_result_ip [31:0] $end
+$var wire 1 , WB_mem_result_valid_ip $end
+$var wire 32 '$ WB_pc_ip [31:0] $end
+$var wire 3 ($ WB_wb_mux_ip [2:0] $end
+$var wire 1 $ reset $end
+$var reg 32 )$ WB_regfile_write_data [31:0] $end
+$var reg 1 % WB_regfile_write_valid $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz )$
+bx ($
+bx '$
+bx &$
+bx %$
+bx $$
+b10000000000 #$
+bx "$
+bx !$
+bx ~#
+x}#
+bx |#
+bx {#
+bx z#
+bx y#
+bx x#
+bx w#
+bx v#
+bx u#
+bx t#
+xs#
+bx r#
+bx q#
+bx p#
+bx o#
+bx n#
+bx m#
+b10000000000 l#
+bx k#
+b0 j#
+b0 i#
+bx h#
+bx g#
+b0 f#
+0e#
+bx d#
+bx c#
+b0 b#
+bx a#
+b0 `#
+x_#
+0^#
+bx ]#
+b0 \#
+z[#
+b0 Z#
+b0 Y#
+bx X#
+bx W#
+bx V#
+b0 U#
+bx T#
+bx S#
+bx R#
+bx Q#
+bx P#
+bx O#
+bx N#
+bx M#
+bx L#
+b0 K#
+0J#
+bz I#
+b0 H#
+bx G#
+bx F#
+b0 E#
+b0 D#
+bx C#
+bx B#
+bx A#
+bx @#
+bx ?#
+bx >#
+bx =#
+bx <#
+bx ;#
+bz :#
+09#
+bx 8#
+bz 7#
+06#
+bx 5#
+bz 4#
+03#
+bx 2#
+bz 1#
+00#
+bx /#
+bz .#
+0-#
+bx ,#
+bz +#
+0*#
+bx )#
+bz (#
+0'#
+bx &#
+bz %#
+0$#
+bx ##
+bz "#
+0!#
+bx ~"
+bz }"
+0|"
+bx {"
+bz z"
+0y"
+bx x"
+bz w"
+0v"
+bx u"
+bz t"
+0s"
+bx r"
+bz q"
+0p"
+bx o"
+bz n"
+0m"
+bx l"
+bz k"
+0j"
+bx i"
+bz h"
+0g"
+bx f"
+bz e"
+0d"
+bx c"
+bz b"
+0a"
+bx `"
+bz _"
+0^"
+bx ]"
+bz \"
+0["
+bx Z"
+bz Y"
+0X"
+bx W"
+bz V"
+0U"
+bx T"
+bz S"
+0R"
+bx Q"
+bz P"
+0O"
+bx N"
+bz M"
+0L"
+bx K"
+bz J"
+0I"
+bx H"
+bz G"
+0F"
+bx E"
+bz D"
+0C"
+bx B"
+bz A"
+0@"
+bx ?"
+bz >"
+0="
+bx <"
+bz ;"
+0:"
+bx 9"
+bz 8"
+b0 7"
+bx 6"
+bx 5"
+bx 4"
+bx 3"
+bx 2"
+bx 1"
+bx 0"
+bx /"
+bx ."
+bx -"
+bx ,"
+bx +"
+b0 *"
+b0 )"
+b0 ("
+bx '"
+bx &"
+bx %"
+bx $"
+bx #"
+bx ""
+bx !"
+bx ~
+bx }
+bx |
+bx {
+bx z
+xy
+bx x
+xw
+bx v
+bx u
+bx t
+bx s
+bx r
+bx q
+bx p
+bx o
+bx n
+bx m
+xl
+bx k
+bx j
+bx i
+bx h
+bx g
+bx f
+bx e
+bx d
+bx c
+bz b
+bx a
+bx `
+b0 _
+b0 ^
+x]
+bx \
+bx [
+bx Z
+bx Y
+xX
+bx W
+bx V
+bx U
+bx T
+bx S
+bx R
+b0 Q
+b0 P
+xO
+b0 N
+0M
+bx L
+bx K
+bx J
+bx I
+bx H
+xG
+bx F
+xE
+bx D
+bx C
+bx B
+bx A
+0@
+bx ?
+bx >
+bx =
+bx <
+x;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+bx 5
+x4
+bx 3
+bx 2
+x1
+bx 0
+bx /
+bx .
+bx -
+x,
+1+
+bx *
+b0 )
+0(
+x'
+bz &
+0%
+1$
+1#
+b0 "
+1!
+$end
+#1
+0!
+#2
+bz q
+0l
+bz f
+bz ."
+bz 2"
+bz e
+bz /"
+bz 4"
+bz d
+bz -"
+bz s
+bz #"
+0w
+b0 x
+b1 |
+0y
+bz ~
+b0 '"
+b101 ""
+b10 ("
+b0 u
+bz c
+0}#
+0'
+0s#
+b0 M#
+b0 W#
+b0 L#
+b0 V#
+b0 ]#
+b0 g#
+b0 h#
+bz a#
+bz k#
+0_#
+b0 6
+b0 i
+b0 d#
+b0 5
+b0 k
+b0 c#
+04
+b0 <"
+b0 ?"
+b0 B"
+b0 E"
+b0 H"
+b0 K"
+b0 N"
+b0 Q"
+b0 T"
+b0 W"
+b0 Z"
+b0 ]"
+b0 `"
+b0 c"
+b0 f"
+b0 i"
+b0 l"
+b0 o"
+b0 r"
+b0 u"
+b0 x"
+b0 {"
+b0 ~"
+b0 ##
+b0 &#
+b0 )#
+b0 ,#
+b0 /#
+b0 2#
+b0 5#
+b0 8#
+b0 ;#
+b0 9
+b0 {
+b0 A#
+b0 <
+b0 z
+b0 @#
+b0 =
+b0 Y
+b0 o
+b0 >
+b0 Z
+b0 n
+b0 ?
+b0 U
+b0 m
+b0 +"
+b0 7
+b0 &"
+b0 ,"
+b0 C#
+b0 8
+b0 %"
+b0 B#
+b100 )
+b100 *"
+b100 H#
+b100 \#
+b0 *
+b0 $"
+b0 G#
+b0 R
+b0 !"
+b0 F#
+b0 :
+b0 }
+b0 ?#
+0;
+b0 K
+b0 t
+b0 =#
+b0 L
+b0 r
+b0 <#
+b0 J
+b0 v
+b0 >#
+b0 X#
+0O
+0G
+b0 H
+b0 N#
+b0 r#
+b0 t#
+b0 |#
+0,
+1!
+#3
+0!
+#4
+0]
+01
+b0 2
+b0 {#
+b0 $$
+b0 C
+b0 Q#
+b0 o#
+b0 F
+b0 P#
+b0 n#
+b0 A
+b0 \
+b0 j
+b0 1"
+b0 S#
+b0 q#
+b0 B
+b0 [
+b0 R#
+b0 p#
+b0 I
+b0 T#
+b0 !$
+b0 D
+b0 O#
+b0 m#
+b0 ~#
+0E
+1!
+#5
+0!
+#6
+0X
+b0 /
+b0 x#
+b0 %$
+b0 0
+b0 w#
+b0 '$
+b0 6"
+b0 -
+b0 W
+b0 a
+b0 0"
+b0 9"
+b0 z#
+b0 .
+b0 V
+b0 y#
+b0 ($
+1!
+#7
+0!
+b100 `#
+b100 i#
+b100 j#
+b100 b#
+b100 f#
+1^#
+0$
+#8
+b1000 `#
+b1000 i#
+b1000 j#
+bz M#
+bz W#
+bz L#
+bz V#
+b1000 b#
+b1000 f#
+b1 "
+bz =
+bz Y
+bz o
+bz >
+bz Z
+bz n
+bz ?
+bz U
+bz m
+bz +"
+bz 7
+bz &"
+bz ,"
+bz C#
+b0 )
+b0 *"
+b0 H#
+b0 \#
+bz *
+bz $"
+bz G#
+bz R
+bz !"
+bz F#
+b1 :
+b1 }
+b1 ?#
+bz K
+bz t
+bz =#
+bz L
+bz r
+bz <#
+bz 5
+bz k
+bz c#
+b1000101000001010110011 a#
+b1000101000001010110011 k#
+1_#
+b100 ]#
+b100 g#
+b100 h#
+1!
+#9
+0!
+#10
+1l
+b0 q
+b1100 `#
+b1100 i#
+b1100 j#
+b0 h
+b0 3"
+b101 f
+b101 ."
+b101 2"
+b0 g
+b0 5"
+b10 e
+b10 /"
+b10 4"
+b101 d
+b110011 -"
+b0 s
+b11000 u
+b1 '"
+b0 ""
+b0 ("
+b1100 b#
+b1100 f#
+b1000101000001010110011 c
+b1000 ]#
+b1000 g#
+b1000 h#
+b1000000011101100000001000110011 a#
+b1000000011101100000001000110011 k#
+b1000101000001010110011 5
+b1000101000001010110011 k
+b1000101000001010110011 c#
+14
+b100 6
+b100 i
+b100 d#
+bz A
+bz \
+bz j
+bz 1"
+bz S#
+bz q#
+bz I
+bz T#
+bz !$
+b1 D
+b1 O#
+b1 m#
+b1 ~#
+b10 "
+1!
+#11
+0!
+#12
+b1100 f
+b1100 ."
+b1100 2"
+b111 e
+b111 /"
+b111 4"
+b100 d
+b1 '"
+b0 ""
+b0 ("
+b11001 u
+b10000 `#
+b10000 i#
+b10000 j#
+b0 M#
+b0 W#
+b0 L#
+b0 V#
+1J#
+b0 K#
+b0 Y#
+b1000000011101100000001000110011 c
+b10000 b#
+b10000 f#
+b11 "
+bz 6"
+bz -
+bz W
+bz a
+bz 0"
+bz 9"
+bz z#
+b100 <
+b100 z
+b100 @#
+b10 =
+b10 Y
+b10 o
+b101 >
+b101 Z
+b101 n
+b110011 ?
+b110011 U
+b110011 m
+b110011 +"
+b101 7
+b101 &"
+b101 ,"
+b101 C#
+b1 8
+b1 %"
+b1 B#
+b0 K
+b0 t
+b0 =#
+b0 L
+b0 r
+b0 <#
+b11000 J
+b11000 v
+b11000 >#
+b11000 X#
+1O
+b1000000011101100000001000110011 5
+b1000000011101100000001000110011 k
+b1000000011101100000001000110011 c#
+b1000 6
+b1000 i
+b1000 d#
+b0 a#
+b0 k#
+b1100 ]#
+b1100 g#
+b1100 h#
+1!
+#13
+0!
+#14
+bz q
+0l
+b10100 `#
+b10100 i#
+b10100 j#
+b0 f
+b0 ."
+b0 2"
+b0 e
+b0 /"
+b0 4"
+b0 d
+b0 -"
+bz s
+b0 '"
+b101 ""
+b10 ("
+b0 u
+b10100 b#
+b10100 f#
+b0 c
+1]
+b10000 ]#
+b10000 g#
+b10000 h#
+b0 5
+b0 k
+b0 c#
+b1100 6
+b1100 i
+b1100 d#
+b1000 <
+b1000 z
+b1000 @#
+b111 =
+b111 Y
+b111 o
+b1100 >
+b1100 Z
+b1100 n
+b100 7
+b100 &"
+b100 ,"
+b100 C#
+b11001 J
+b11001 v
+b11001 >#
+b11001 X#
+b100 F
+b100 P#
+b100 n#
+b101 A
+b101 \
+b101 j
+b101 1"
+b101 S#
+b101 q#
+b1 B
+b1 [
+b1 R#
+b1 p#
+1G
+b100 "
+1!
+#15
+0!
+#16
+1F"
+b11000 `#
+b11000 i#
+b11000 j#
+b100000 7"
+1X
+b0 &
+b0 b
+b0 8"
+b0 ;"
+b0 >"
+b0 A"
+b0 D"
+b0 G"
+b0 J"
+b0 M"
+b0 P"
+b0 S"
+b0 V"
+b0 Y"
+b0 \"
+b0 _"
+b0 b"
+b0 e"
+b0 h"
+b0 k"
+b0 n"
+b0 q"
+b0 t"
+b0 w"
+b0 z"
+b0 }"
+b0 "#
+b0 %#
+b0 (#
+b0 +#
+b0 .#
+b0 1#
+b0 4#
+b0 7#
+b0 :#
+b0 I#
+b0 )$
+1%
+bz M#
+bz W#
+bz L#
+bz V#
+0J#
+b11000 b#
+b11000 f#
+b101 "
+b100 0
+b100 w#
+b100 '$
+b101 6"
+b101 -
+b101 W
+b101 a
+b101 0"
+b101 9"
+b101 z#
+11
+b1 .
+b1 V
+b1 y#
+b1 ($
+b1000 F
+b1000 P#
+b1000 n#
+b100 A
+b100 \
+b100 j
+b100 1"
+b100 S#
+b100 q#
+b1100 <
+b1100 z
+b1100 @#
+b0 =
+b0 Y
+b0 o
+b0 >
+b0 Z
+b0 n
+b0 ?
+b0 U
+b0 m
+b0 +"
+b0 7
+b0 &"
+b0 ,"
+b0 C#
+b0 8
+b0 %"
+b0 B#
+bz K
+bz t
+bz =#
+bz L
+bz r
+bz <#
+b0 J
+b0 v
+b0 >#
+b0 X#
+0O
+b10000 6
+b10000 i
+b10000 d#
+b10100 ]#
+b10100 g#
+b10100 h#
+1!
+#17
+0!
+#18
+b11100 `#
+b11100 i#
+b11100 j#
+1C"
+0F"
+b11100 b#
+b11100 f#
+0]
+b10000 7"
+b11000 ]#
+b11000 g#
+b11000 h#
+b10100 6
+b10100 i
+b10100 d#
+b10000 <
+b10000 z
+b10000 @#
+b1100 F
+b1100 P#
+b1100 n#
+b0 A
+b0 \
+b0 j
+b0 1"
+b0 S#
+b0 q#
+b0 B
+b0 [
+b0 R#
+b0 p#
+0G
+b1000 0
+b1000 w#
+b1000 '$
+b100 6"
+b100 -
+b100 W
+b100 a
+b100 0"
+b100 9"
+b100 z#
+b110 "
+1!
+#19
+0!
+#20
+0C"
+b100000 `#
+b100000 i#
+b100000 j#
+b0 7"
+0X
+bz &
+bz b
+bz 8"
+bz ;"
+bz >"
+bz A"
+bz D"
+bz G"
+bz J"
+bz M"
+bz P"
+bz S"
+bz V"
+bz Y"
+bz \"
+bz _"
+bz b"
+bz e"
+bz h"
+bz k"
+bz n"
+bz q"
+bz t"
+bz w"
+bz z"
+bz }"
+bz "#
+bz %#
+bz (#
+bz +#
+bz .#
+bz 1#
+bz 4#
+bz 7#
+bz :#
+bz I#
+bz )$
+0%
+b100000 b#
+b100000 f#
+b111 "
+b1100 0
+b1100 w#
+b1100 '$
+b0 6"
+b0 -
+b0 W
+b0 a
+b0 0"
+b0 9"
+b0 z#
+01
+b0 .
+b0 V
+b0 y#
+b0 ($
+b10000 F
+b10000 P#
+b10000 n#
+b10100 <
+b10100 z
+b10100 @#
+b11000 6
+b11000 i
+b11000 d#
+b11100 ]#
+b11100 g#
+b11100 h#
+1!
+#21
+0!
+#22
+b100100 `#
+b100100 i#
+b100100 j#
+b100100 b#
+b100100 f#
+b100000 ]#
+b100000 g#
+b100000 h#
+b11100 6
+b11100 i
+b11100 d#
+b11000 <
+b11000 z
+b11000 @#
+b10100 F
+b10100 P#
+b10100 n#
+b10000 0
+b10000 w#
+b10000 '$
+b1000 "
+1!
+#23
+0!
+#24
+b101000 `#
+b101000 i#
+b101000 j#
+b101000 b#
+b101000 f#
+b1001 "
+b10100 0
+b10100 w#
+b10100 '$
+b11000 F
+b11000 P#
+b11000 n#
+b11100 <
+b11100 z
+b11100 @#
+b100000 6
+b100000 i
+b100000 d#
+b100100 ]#
+b100100 g#
+b100100 h#
+1!
+#25
+0!
+#26
+b101100 `#
+b101100 i#
+b101100 j#
+b101100 b#
+b101100 f#
+b101000 ]#
+b101000 g#
+b101000 h#
+b100100 6
+b100100 i
+b100100 d#
+b100000 <
+b100000 z
+b100000 @#
+b11100 F
+b11100 P#
+b11100 n#
+b11000 0
+b11000 w#
+b11000 '$
+b1010 "
+1!
+#27
+0!
+#28
+b110000 `#
+b110000 i#
+b110000 j#
+b110000 b#
+b110000 f#
+b1011 "
+b11100 0
+b11100 w#
+b11100 '$
+b100000 F
+b100000 P#
+b100000 n#
+b100100 <
+b100100 z
+b100100 @#
+b101000 6
+b101000 i
+b101000 d#
+b101100 ]#
+b101100 g#
+b101100 h#
+1!
+#29
+0!
+#30
+b110100 `#
+b110100 i#
+b110100 j#
+b110100 b#
+b110100 f#
+b110000 ]#
+b110000 g#
+b110000 h#
+b101100 6
+b101100 i
+b101100 d#
+b101000 <
+b101000 z
+b101000 @#
+b100100 F
+b100100 P#
+b100100 n#
+b100000 0
+b100000 w#
+b100000 '$
+b1100 "
+1!
+#31
+0!
+#32
+b111000 `#
+b111000 i#
+b111000 j#
+b111000 b#
+b111000 f#
+b1101 "
+b100100 0
+b100100 w#
+b100100 '$
+b101000 F
+b101000 P#
+b101000 n#
+b101100 <
+b101100 z
+b101100 @#
+b110000 6
+b110000 i
+b110000 d#
+b110100 ]#
+b110100 g#
+b110100 h#
+1!
+#33
+0!
+#34
+b111100 `#
+b111100 i#
+b111100 j#
+b111100 b#
+b111100 f#
+b111000 ]#
+b111000 g#
+b111000 h#
+b110100 6
+b110100 i
+b110100 d#
+b110000 <
+b110000 z
+b110000 @#
+b101100 F
+b101100 P#
+b101100 n#
+b101000 0
+b101000 w#
+b101000 '$
+b1110 "
+1!
+#35
+0!
+#36
+b1000000 `#
+b1000000 i#
+b1000000 j#
+b1000000 b#
+b1000000 f#
+b1111 "
+b101100 0
+b101100 w#
+b101100 '$
+b110000 F
+b110000 P#
+b110000 n#
+b110100 <
+b110100 z
+b110100 @#
+b111000 6
+b111000 i
+b111000 d#
+b111100 ]#
+b111100 g#
+b111100 h#
+1!
+#37
+0!
+#38
+b1000100 `#
+b1000100 i#
+b1000100 j#
+b1000100 b#
+b1000100 f#
+b1000000 ]#
+b1000000 g#
+b1000000 h#
+b111100 6
+b111100 i
+b111100 d#
+b111000 <
+b111000 z
+b111000 @#
+b110100 F
+b110100 P#
+b110100 n#
+b110000 0
+b110000 w#
+b110000 '$
+b10000 "
+1!
+#39
+0!
+#40
+b1001000 `#
+b1001000 i#
+b1001000 j#
+b1001000 b#
+b1001000 f#
+b10001 "
+b110100 0
+b110100 w#
+b110100 '$
+b111000 F
+b111000 P#
+b111000 n#
+b111100 <
+b111100 z
+b111100 @#
+b1000000 6
+b1000000 i
+b1000000 d#
+b1000100 ]#
+b1000100 g#
+b1000100 h#
+1!
+#41
+0!
+#42
+b1001100 `#
+b1001100 i#
+b1001100 j#
+b1001100 b#
+b1001100 f#
+b1001000 ]#
+b1001000 g#
+b1001000 h#
+b1000100 6
+b1000100 i
+b1000100 d#
+b1000000 <
+b1000000 z
+b1000000 @#
+b111100 F
+b111100 P#
+b111100 n#
+b111000 0
+b111000 w#
+b111000 '$
+b10010 "
+1!
+#43
+0!
+#44
+b1010000 `#
+b1010000 i#
+b1010000 j#
+b1010000 b#
+b1010000 f#
+b10011 "
+b111100 0
+b111100 w#
+b111100 '$
+b1000000 F
+b1000000 P#
+b1000000 n#
+b1000100 <
+b1000100 z
+b1000100 @#
+b1001000 6
+b1001000 i
+b1001000 d#
+b1001100 ]#
+b1001100 g#
+b1001100 h#
+1!
+#45
+0!
+#46
+b1010100 `#
+b1010100 i#
+b1010100 j#
+b1010100 b#
+b1010100 f#
+b1010000 ]#
+b1010000 g#
+b1010000 h#
+b1001100 6
+b1001100 i
+b1001100 d#
+b1001000 <
+b1001000 z
+b1001000 @#
+b1000100 F
+b1000100 P#
+b1000100 n#
+b1000000 0
+b1000000 w#
+b1000000 '$
+b10100 "
+1!
+#47
+0!
+#48
+b1011000 `#
+b1011000 i#
+b1011000 j#
+b1011000 b#
+b1011000 f#
+b10101 "
+b1000100 0
+b1000100 w#
+b1000100 '$
+b1001000 F
+b1001000 P#
+b1001000 n#
+b1001100 <
+b1001100 z
+b1001100 @#
+b1010000 6
+b1010000 i
+b1010000 d#
+b1010100 ]#
+b1010100 g#
+b1010100 h#
+1!
+#49
+0!
+#50
+b1011100 `#
+b1011100 i#
+b1011100 j#
+b1011100 b#
+b1011100 f#
+b1011000 ]#
+b1011000 g#
+b1011000 h#
+b1010100 6
+b1010100 i
+b1010100 d#
+b1010000 <
+b1010000 z
+b1010000 @#
+b1001100 F
+b1001100 P#
+b1001100 n#
+b1001000 0
+b1001000 w#
+b1001000 '$
+b10110 "
+1!
+#51
+0!
+#52
+b1100000 `#
+b1100000 i#
+b1100000 j#
+b1100000 b#
+b1100000 f#
+b10111 "
+b1001100 0
+b1001100 w#
+b1001100 '$
+b1010000 F
+b1010000 P#
+b1010000 n#
+b1010100 <
+b1010100 z
+b1010100 @#
+b1011000 6
+b1011000 i
+b1011000 d#
+b1011100 ]#
+b1011100 g#
+b1011100 h#
+1!
+#53
+0!
+#54
+b1100100 `#
+b1100100 i#
+b1100100 j#
+b1100100 b#
+b1100100 f#
+b1100000 ]#
+b1100000 g#
+b1100000 h#
+b1011100 6
+b1011100 i
+b1011100 d#
+b1011000 <
+b1011000 z
+b1011000 @#
+b1010100 F
+b1010100 P#
+b1010100 n#
+b1010000 0
+b1010000 w#
+b1010000 '$
+b11000 "
+1!
+#55
+0!
+#56
+b1101000 `#
+b1101000 i#
+b1101000 j#
+b1101000 b#
+b1101000 f#
+b11001 "
+b1010100 0
+b1010100 w#
+b1010100 '$
+b1011000 F
+b1011000 P#
+b1011000 n#
+b1011100 <
+b1011100 z
+b1011100 @#
+b1100000 6
+b1100000 i
+b1100000 d#
+b1100100 ]#
+b1100100 g#
+b1100100 h#
+1!
+#57
+0!
