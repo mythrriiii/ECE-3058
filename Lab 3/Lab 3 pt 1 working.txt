@@ -1,0 +1,156 @@
+D Map
+
+
+				l0  l1  l2  l3  l4  l5  l6  l7         hit?
+110    0001 0 001 0000  l1      inv 11  inv inv inv inv inv inv        no
+136    0001 0 011 0110  l3	inv 11  inv 13  inv inv inv inv	       no	
+202    0010 0 000 0010  l0      20  11  inv 13  inv inv inv inv        no
+1A3    0001 1 010 0011  l2	20  11  1A  13  inv inv inv inv        no
+102    0001 0 000 0010  l0	10  11  1A  13  inv inv inv inv        no
+361    0011 0 110 0001  l6	10  11  1A  13  inv inv 36  inv        no
+204    0010 0 000 0100  l0	20  11  1A  13  inv inv 36  inv        no
+114    0001 0 001 0100  l1 	20  11  1A  13  inv inv 36  inv        yes
+1A4    0001 1 010 0100  l2	20  11  1A  13  inv inv 36  inv        yes
+177    0001 0 111 0111  l7	20  11  1A  13  inv inv 36  17         no
+301    0011 0 000 0001  l0	30  11  1A  13  inv inv 36  17         no
+206    0010 0 000 0110  l0	20  11  1A  13  inv inv 36  17         no
+135    0001 0 011 0101  l3	20  11  1A  13  inv inv 36  17         yes
+
+
+
+l0  l1  l2  l3  l4  l5  l6  l7
+inv 11  inv inv inv inv inv inv
+
+
+10 / 13
+
+
+
+
+4-way LRU
+
+				w0  w1  w2  w3	   w0  w1  w2  w3	hit?
+110    0001 000 1 0000  s1      inv inv inv inv    11  inv inv inv	no
+136    0001 001 1 0110  s1	inv inv inv inv    11  13  inv inv	no	
+202    0010 000 0 0010  s0      20  inv inv inv    11  13  inv inv	no
+1A3    0001 101 0 0011  s0	20  1a  inv inv    11  13  inv inv	no
+102    0001 000 0 0010  s0	20  1a  10  inv    11  13  inv inv	no
+361    0011 011 0 0001  s0	20  1a  10  36     11  13  inv inv	no
+204    0010 000 0 0100  s0	20  1a  10  36     11  13  inv inv	yes
+114    0001 000 1 0100  s1 	20  1a  10  36     11  13  inv inv	yes
+1A4    0001 101 0 0100  s0	20  1a  10  36     11  13  inv inv	yes
+177    0001 011 1 0111  s1	20  1a  10  36     11  13  17  inv	no
+301    0011 000 0 0001  s0	20  1a  30  36     11  13  17  inv	no
+206    0010 000 0 0110  s0	20  1a  30  36     11  13  17  inv	yes
+135    0001 001 1 0101  s1	20  1a  30  36     11  13  17  inv	yes
+
+
+  mru 2  3  lru
+0 w0  w2 w1 w3
+1 w1  w2 w0
+
+8 / 13 
+
+
+
+
+
+A1: 
+
+DM 
+128 KB cache (Data array)
+32   B cache lines
+4   KB data (num sets) 4096
+1      num ways
+12     num index bits
+27 data bits? coz drop
+15     num tag bits 
+       tag array
+15 + 2 17 bits in a row for tag memory
+
+Assume 32b address?
+
+
+
+tag bits: 15
+tag array bits: 15 + 2 = 17
+
+index bits: 12
+rows: 32 * 8 = 256 bits in a row 
+
+
+
+Decoder: 
+Tag = 200x(indexbits) + 1000 = 200 * 12 + 1000 = 3400
+Data = 200x(indexbits) + 1000 = 200 * 12 + 1000 = 3400
+
+Memory Array
+Tag = 200*log2(2^12) + 200*log2(17) + 1000 = 2400 + 817.5 + 1000 = 4217.5
+Data = 200*log2(2^12) + 200*log2(256) + 1000 = 200*12 + 200*8 + 1000 = 5000 
+
+
+
+
+Comparator
+200(15) + 1000 = 4000
+
+N to 1 MUX
+500*log2(8) + 1000 = 1500 + 1000 = 2500
+
+Buffer Driver
+2000
+
+Data output driver
+500(1) + 1000 = 1500
+
+Valid output driver
+1000
+
+
+
+
+tag decoder + tag array + and gate + VoP = 3400 + 4217.5 + 500 + 1000 = 9117.5
+tag decoder + Comparator + tag array + and gate + vop = 3400 + 4000 + 4217.5 + 500 + 1000 = 13,117.5 ps
+
+
+
+data decoder + data array + mux + dop = 3400 + 5000 + 2500 + 1500 = 12400
+
+
+
+
+Critical Path and time: 
+tag decoder + Comparator + tag array + and gate + vop = 3400 + 4000 + 4217.5 + 500 + 1000 = 13,117.5 ps
+
+CPU cycles = access time / clock time = access time * freq = 13117.5 ps * 150 MHz = 13117.5 * 10^-12 * 150 * 10^6 = 1.967625 = 1.968 CPU cycles
+
+
+128 KB
+32 B cache lines
+N = 4
+no of rows = 1024 = 2^ 10 
+
+index bits: 10
+tag bits: 17
+
+
+
+Decoder
+Tag: 200(10) + 1000 = 3000
+Data: 3000
+
+Memory Array
+Tag: 200log2(2^10) + 200log2(76) + 1000 = 200*10 + 1249.5 + 1000 = 4249.5
+Data: 200log2(2^10) + 200log2(1024) + 1000 = 200*10 + 2000 + 1000 = 5000
+
+bits in a row = 17+2 * 4 = 19*4 = 76
+
+Comparator:  200 * 17 + 1000 = 4400
+
+Nto 1 MUX: 2500 ( 8 to 1)
+
+Buffer Driver: 2000
+
+Data output Driver: 500A + 1000 = 3000 (for 4 way)
+
+Valid Output driver: 1000 
